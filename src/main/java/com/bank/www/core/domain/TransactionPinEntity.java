@@ -8,16 +8,14 @@ import com.bank.www.core.exception.enums.ErrorCodeEnum;
 
 public class TransactionPinEntity {
     private Long id;
-    private UserEntity user;
     private String pin;
     private Boolean blocked;
     private Integer attempts;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    public TransactionPinEntity(Long id, UserEntity user, String pin, Boolean blocked, Integer attempts, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public TransactionPinEntity(Long id, WalletEntity wallet, String pin, Boolean blocked, Integer attempts, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
-        this.user = user;
         this.pin = pin;
         this.blocked = blocked;
         this.attempts = attempts;
@@ -25,11 +23,10 @@ public class TransactionPinEntity {
         this.updatedAt = updatedAt;
     }
     
-    public TransactionPinEntity(UserEntity user, String pin, Boolean blocked, Integer attempts) {
-        this.user = user;
-        this.pin = pin;
-        this.blocked = blocked;
-        this.attempts = attempts;
+    public TransactionPinEntity(String pin) throws TransactionPinException {
+        this.setPin(pin);
+        this.blocked = false;
+        this.attempts = 3;
         this.createdAt = LocalDateTime.now();
         this.updatedAt = LocalDateTime.now();
     }
@@ -41,10 +38,6 @@ public class TransactionPinEntity {
         return id;
     }
 
-    public UserEntity getUser() {
-        return user;
-    }
-    
     public String getPin() {
         return pin;
     }
@@ -75,10 +68,6 @@ public class TransactionPinEntity {
         this.id = id;
     }
     
-    public void setUser(UserEntity user) {
-        this.user = user;
-    }
-
     public void setPin(String pin) throws TransactionPinException {
         this.pinIsValid(pin);
         this.pin = pin;
@@ -88,8 +77,12 @@ public class TransactionPinEntity {
         this.blocked = blocked;
     }
 
-    public void setAttempts(Integer attempts) {
-        this.attempts = attempts;
+    public void increaseAttempt() {
+        this.attempts++;
+    }
+
+    public void resetAttempts() {
+        this.attempts = 0;
     }
     
     public void setCreatedAt(LocalDateTime createdAt) {
@@ -102,12 +95,12 @@ public class TransactionPinEntity {
     
     @Override
     public String toString() {
-        return "TransactionPinEntity [id=" + id + ", user=" + user + ", pin=" + pin + ", blocked=" + blocked + ", attempts=" + attempts + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
+        return "TransactionPinEntity [id=" + id + ", pin=" + pin + ", blocked=" + blocked + ", attempts=" + attempts + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, user, pin, blocked, attempts, createdAt, updatedAt);
+        return Objects.hash(id, pin, blocked, attempts, createdAt, updatedAt);
     }
 
     @Override
@@ -119,7 +112,7 @@ public class TransactionPinEntity {
         if (getClass() != obj.getClass())
             return false;
         TransactionPinEntity other = (TransactionPinEntity) obj;
-        return Objects.equals(id, other.id) && Objects.equals(user, other.user) && Objects.equals(pin, other.pin) && Objects.equals(blocked, other.blocked) && Objects.equals(attempts, other.attempts) && Objects.equals(createdAt, other.createdAt) && Objects.equals(updatedAt, other.updatedAt);
+        return Objects.equals(id, other.id) && Objects.equals(pin, other.pin) && Objects.equals(blocked, other.blocked) && Objects.equals(attempts, other.attempts) && Objects.equals(createdAt, other.createdAt) && Objects.equals(updatedAt, other.updatedAt);
     }
 
 }

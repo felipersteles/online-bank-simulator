@@ -1,6 +1,7 @@
+
 # Online Bank Simulator
 
-This is a applciation based on a challange of a 
+This application delivers a robust solution for a simplified banking system, built with Java and Spring Boot to leverage its widespread adoption, built-in security, and high performance, using Maven as a reliable dependency manager. Following Clean Architecture principles, the project is organized into distinct layers (domain, application, and infrastructure) to ensure loose coupling, enhanced testability, and streamlined maintenance, incorporating patterns such as DTOs, centralized exception handling, and Bean Validation for data integrity.
 
 ## About
 Simplified Payment App is a streamlined payment platform where users can deposit and transfer money between accounts. There are two types of users:

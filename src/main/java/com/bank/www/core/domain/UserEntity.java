@@ -12,23 +12,21 @@ public class UserEntity {
     private String password;
     private UserTypeEnum type;
     private TaxNumberEntity taxNumber;
-    private TransactionPinEntity transactionPin;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;   
 
-    public UserEntity(Long id, String fullName, String email, String password, UserTypeEnum type, TaxNumberEntity taxNumber, TransactionPinEntity transactionPin, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public UserEntity(Long id, String fullName, String email, String password, UserTypeEnum type, TaxNumberEntity taxNumber, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.fullName = fullName;
         this.email = email;
         this.password = password;
         this.type = type;
         this.taxNumber = taxNumber;
-        this.transactionPin = transactionPin;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
 
-    public UserEntity(String fullName, String email, String password, UserTypeEnum type, TaxNumberEntity taxNumber, TransactionPinEntity transactionPin) {
+    public UserEntity(String fullName, String email, String password, UserTypeEnum type, TaxNumberEntity taxNumber) {
         this.fullName = fullName;
         this.email = email;
         this.password = password;
@@ -65,10 +63,6 @@ public class UserEntity {
         return taxNumber;
     }
 
-    public TransactionPinEntity getTransactionPin() {
-        return transactionPin;
-    }
-
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
@@ -101,10 +95,6 @@ public class UserEntity {
         this.taxNumber = taxNumber;
     }
 
-    public void setTransactionPin(TransactionPinEntity transactionPin) {
-        this.transactionPin = transactionPin;
-    }
-
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
@@ -115,12 +105,12 @@ public class UserEntity {
 
     @Override
     public String toString() {
-        return "UserEntity [id=" + id + ", fullName=" + fullName + ", email=" + email + ", password=" + password + ", type=" + type + ", taxNumber=" + taxNumber + ", transactionPin=" + transactionPin + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
+        return "UserEntity [id=" + id + ", fullName=" + fullName + ", email=" + email + ", password=" + password + ", type=" + type + ", taxNumber=" + taxNumber + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, fullName, email, password, type, taxNumber, transactionPin, createdAt, updatedAt);
+        return Objects.hash(id, fullName, email, password, type, taxNumber, createdAt, updatedAt);
     }
 
     @Override
@@ -132,7 +122,7 @@ public class UserEntity {
         if (getClass() != obj.getClass())
             return false;
         UserEntity other = (UserEntity) obj;
-        return Objects.equals(id, other.id) && Objects.equals(fullName, other.fullName) && Objects.equals(email, other.email) && Objects.equals(password, other.password) && type == other.type && Objects.equals(taxNumber, other.taxNumber) && Objects.equals(transactionPin, other.transactionPin) && Objects.equals(createdAt, other.createdAt) && Objects.equals(updatedAt, other.updatedAt);
+        return Objects.equals(id, other.id) && Objects.equals(fullName, other.fullName) && Objects.equals(email, other.email) && Objects.equals(password, other.password) && type == other.type && Objects.equals(taxNumber, other.taxNumber) && Objects.equals(createdAt, other.createdAt) && Objects.equals(updatedAt, other.updatedAt);
     }
 
 }

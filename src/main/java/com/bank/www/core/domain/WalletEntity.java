@@ -12,21 +12,24 @@ public class WalletEntity {
     private Long id;
     private UserEntity user;
     private BigDecimal balance;
+    private TransactionPinEntity transactionPin;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    public WalletEntity(Long id, UserEntity user, BigDecimal balance, LocalDateTime createdAt,
+    public WalletEntity(Long id, UserEntity user, BigDecimal balance, TransactionPinEntity transactionPin, LocalDateTime createdAt,
             LocalDateTime updatedAt) {
         this.id = id;
         this.user = user;
         this.balance = balance;
+        this.transactionPin = transactionPin;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
 
-    public WalletEntity(BigDecimal balance, UserEntity user) {
+    public WalletEntity(BigDecimal balance, UserEntity user, TransactionPinEntity transactionPin) {
         this.user = user;
         this.balance = balance;
+        this.transactionPin = transactionPin;
         this.createdAt = LocalDateTime.now();
     }
 
@@ -43,6 +46,10 @@ public class WalletEntity {
 
     public BigDecimal getBalance() {
         return balance;
+    }
+
+    public TransactionPinEntity getTransactionPin() {
+        return transactionPin;
     }
 
     public LocalDateTime getCreatedAt() {
@@ -81,6 +88,10 @@ public class WalletEntity {
         this.balance = balance;
     }
 
+    public void setTransactionPin(TransactionPinEntity transactionPin) {
+        this.transactionPin = transactionPin;
+    }
+
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
@@ -91,12 +102,12 @@ public class WalletEntity {
 
     @Override
     public String toString() {
-        return "WalletEntity [id=" + id + ", user=" + user + ", balance=" + balance + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
+        return "WalletEntity [id=" + id + ", user=" + user + ", balance=" + balance + ", transactionPin=" + transactionPin + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, user, balance, createdAt, updatedAt);
+        return Objects.hash(id, user, balance, transactionPin, createdAt, updatedAt);
     }
 
     @Override
@@ -108,7 +119,7 @@ public class WalletEntity {
         if (getClass() != obj.getClass())
             return false;
         WalletEntity other = (WalletEntity) obj;
-        return Objects.equals(id, other.id) && Objects.equals(user, other.user) && Objects.equals(balance, other.balance) && Objects.equals(createdAt, other.createdAt) && Objects.equals(updatedAt, other.updatedAt);
+        return Objects.equals(id, other.id) && Objects.equals(user, other.user) && Objects.equals(balance, other.balance) && Objects.equals(transactionPin, other.transactionPin) && Objects.equals(createdAt, other.createdAt) && Objects.equals(updatedAt, other.updatedAt);
     }
 }
 
