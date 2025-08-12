@@ -1,7 +1,7 @@
 package com.bank.www.application.usecaseimpl;
 
 import com.bank.www.application.gateway.TransactionPinValidateGateway;
-import com.bank.www.core.domain.TransactionPinEntity;
+import com.bank.www.core.domain.TransactionPin;
 import com.bank.www.core.exception.TransactionPinException;
 import com.bank.www.core.exception.enums.ErrorCodeEnum;
 import com.bank.www.usecase.TransactionPinValidateUseCase;
@@ -16,7 +16,7 @@ public class TransactionPinValidateUseCaseImpl implements TransactionPinValidate
     }
 
     @Override
-    public Boolean validate(TransactionPinEntity transactionPin) throws TransactionPinException {
+    public Boolean validate(TransactionPin transactionPin) throws TransactionPinException {
         if (transactionPin.getBlocked()) throw new TransactionPinException(ErrorCodeEnum.TP0001.getMessage(), ErrorCodeEnum.TP0001.getCode());
 
         if (!transactionPinValidateGateway.validate(transactionPin)){

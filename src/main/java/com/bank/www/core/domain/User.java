@@ -1,23 +1,23 @@
 package com.bank.www.core.domain;
 import java.time.LocalDateTime;
 import java.util.Objects;
+import java.util.UUID;
 
 import com.bank.www.core.domain.enums.UserTypeEnum;
 
-
-public class UserEntity {
-    private Long id;
-    private String fullName;
+public class User {
+    private UUID id;
+    private String fullname;
     private String email;
     private String password;
     private UserTypeEnum type;
-    private TaxNumberEntity taxNumber;
+    private TaxNumber taxNumber;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;   
 
-    public UserEntity(Long id, String fullName, String email, String password, UserTypeEnum type, TaxNumberEntity taxNumber, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public User(UUID id, String fullname, String email, String password, UserTypeEnum type, TaxNumber taxNumber, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
-        this.fullName = fullName;
+        this.fullname = fullname;
         this.email = email;
         this.password = password;
         this.type = type;
@@ -26,8 +26,8 @@ public class UserEntity {
         this.updatedAt = updatedAt;
     }
 
-    public UserEntity(String fullName, String email, String password, UserTypeEnum type, TaxNumberEntity taxNumber) {
-        this.fullName = fullName;
+    public User(String fullname, String email, String password, UserTypeEnum type, TaxNumber taxNumber) {
+        this.fullname = fullname;
         this.email = email;
         this.password = password;
         this.type = type;
@@ -36,15 +36,15 @@ public class UserEntity {
         this.updatedAt = LocalDateTime.now();
     }
 
-    public UserEntity() {
+    public User() {
     }
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public String getFullName() {
-        return fullName;
+    public String getFullname() {
+        return fullname;
     }
 
     public String getEmail() {
@@ -59,7 +59,7 @@ public class UserEntity {
         return type;
     }
 
-    public TaxNumberEntity getTaxNumber() {
+    public TaxNumber getTaxNumber() {
         return taxNumber;
     }
 
@@ -71,12 +71,12 @@ public class UserEntity {
         return updatedAt;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
     }
 
     public void setEmail(String email) {
@@ -91,7 +91,7 @@ public class UserEntity {
         this.type = type;
     }
 
-    public void setTaxNumber(TaxNumberEntity taxNumber) {
+    public void setTaxNumber(TaxNumber taxNumber) {
         this.taxNumber = taxNumber;
     }
 
@@ -105,12 +105,12 @@ public class UserEntity {
 
     @Override
     public String toString() {
-        return "UserEntity [id=" + id + ", fullName=" + fullName + ", email=" + email + ", password=" + password + ", type=" + type + ", taxNumber=" + taxNumber + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
+        return "User [id=" + id + ", fullname=" + fullname + ", email=" + email + ", password=" + password + ", type=" + type + ", taxNumber=" + taxNumber + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, fullName, email, password, type, taxNumber, createdAt, updatedAt);
+        return Objects.hash(id, fullname, email, password, type, taxNumber, createdAt, updatedAt);
     }
 
     @Override
@@ -121,8 +121,8 @@ public class UserEntity {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        UserEntity other = (UserEntity) obj;
-        return Objects.equals(id, other.id) && Objects.equals(fullName, other.fullName) && Objects.equals(email, other.email) && Objects.equals(password, other.password) && type == other.type && Objects.equals(taxNumber, other.taxNumber) && Objects.equals(createdAt, other.createdAt) && Objects.equals(updatedAt, other.updatedAt);
+        User other = (User) obj;
+        return Objects.equals(id, other.id) && Objects.equals(fullname, other.fullname) && Objects.equals(email, other.email) && Objects.equals(password, other.password) && type == other.type && Objects.equals(taxNumber, other.taxNumber) && Objects.equals(createdAt, other.createdAt) && Objects.equals(updatedAt, other.updatedAt);
     }
 
 }

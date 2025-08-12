@@ -3,7 +3,7 @@ package com.bank.www.application.usecaseimpl;
 import java.math.BigDecimal;
 
 import com.bank.www.application.gateway.TransferGateway;
-import com.bank.www.core.domain.TransactionEntity;
+import com.bank.www.core.domain.Transaction;
 import com.bank.www.core.exception.InternalServerErrorException;
 import com.bank.www.core.exception.NotFoundException;
 import com.bank.www.core.exception.NotificationException;
@@ -49,7 +49,7 @@ public class TransferUseCaseImpl implements TransferUseCase {
         fromWallet.transferAmount(amount);
         toWallet.receiveAmount(amount);
 
-        var transaction = createTransactionUseCase.create(new TransactionEntity(fromWallet, toWallet, amount));
+        var transaction = createTransactionUseCase.create(new Transaction(fromWallet, toWallet, amount));
 
         transactionValidateUseCase.validate(transaction);
 

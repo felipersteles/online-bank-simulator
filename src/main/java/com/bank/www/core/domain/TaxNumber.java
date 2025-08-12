@@ -2,14 +2,14 @@ package com.bank.www.core.domain;
 import com.bank.www.core.exception.TaxNumberException;
 import com.bank.www.core.exception.enums.ErrorCodeEnum;
 
-public class TaxNumberEntity {
+public class TaxNumber {
     private String value;
 
-    public TaxNumberEntity(String taxNumber) throws Exception {
+    public TaxNumber(String taxNumber) throws Exception {
         setValue(taxNumber);
     }
 
-    public TaxNumberEntity() {
+    public TaxNumber() {
     }
 
     public void setValue(String value) throws Exception {

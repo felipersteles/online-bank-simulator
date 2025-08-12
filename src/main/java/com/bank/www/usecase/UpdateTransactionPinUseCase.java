@@ -1,7 +1,7 @@
 package com.bank.www.usecase;
 
-import com.bank.www.core.domain.TransactionPinEntity;
+import com.bank.www.core.domain.TransactionPin;
 
 public interface UpdateTransactionPinUseCase {
-    TransactionPinEntity update(TransactionPinEntity transactionPin);
+    TransactionPin update(TransactionPin transactionPin);
 }

@@ -1,7 +1,7 @@
 package com.bank.www.application.gateway;
 
-import com.bank.www.core.domain.WalletEntity;
+import com.bank.www.core.domain.Wallet;
 
 public interface FindWalletByTaxNumberGateway {
-    WalletEntity findByTazNumber(String taxNumber);
+    Wallet findByTazNumber(String taxNumber);
 }

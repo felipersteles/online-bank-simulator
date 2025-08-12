@@ -1,7 +1,7 @@
 package com.bank.www.usecase;
 
-import com.bank.www.core.domain.TransactionEntity;
+import com.bank.www.core.domain.Transaction;
 
 public interface UserNotificationUseCase {
-    Boolean notifyUser(TransactionEntity transaction, String userEmail);
+    Boolean notifyUser(Transaction transaction, String userEmail);
 }

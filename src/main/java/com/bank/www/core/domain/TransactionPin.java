@@ -1,12 +1,14 @@
 package com.bank.www.core.domain;
 
+import static com.bank.www.infra.utils.Utilities.log;
+
 import java.time.LocalDateTime;
 import java.util.Objects;
 
 import com.bank.www.core.exception.TransactionPinException;
 import com.bank.www.core.exception.enums.ErrorCodeEnum;
 
-public class TransactionPinEntity {
+public class TransactionPin {
     private Long id;
     private String pin;
     private Boolean blocked;
@@ -14,7 +16,7 @@ public class TransactionPinEntity {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    public TransactionPinEntity(Long id, WalletEntity wallet, String pin, Boolean blocked, Integer attempts, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public TransactionPin(Long id, Wallet wallet, String pin, Boolean blocked, Integer attempts, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.pin = pin;
         this.blocked = blocked;
@@ -23,7 +25,7 @@ public class TransactionPinEntity {
         this.updatedAt = updatedAt;
     }
     
-    public TransactionPinEntity(String pin) throws TransactionPinException {
+    public TransactionPin(String pin) throws TransactionPinException {
         this.setPin(pin);
         this.blocked = false;
         this.attempts = 3;
@@ -31,7 +33,7 @@ public class TransactionPinEntity {
         this.updatedAt = LocalDateTime.now();
     }
 
-    public TransactionPinEntity() {
+    public TransactionPin() {
     }
     
     public Long getId() {
@@ -59,7 +61,7 @@ public class TransactionPinEntity {
     }
 
     public void pinIsValid(String pin) throws TransactionPinException {
-        if(this.pin.length() != 6) {
+        if(pin.length() != 4) {
             throw new TransactionPinException(ErrorCodeEnum.TP0001.getMessage(), ErrorCodeEnum.TP0001.getCode());
         }
     }
@@ -95,7 +97,7 @@ public class TransactionPinEntity {
     
     @Override
     public String toString() {
-        return "TransactionPinEntity [id=" + id + ", pin=" + pin + ", blocked=" + blocked + ", attempts=" + attempts + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
+        return "TransactionPin [id=" + id + ", pin=" + pin + ", blocked=" + blocked + ", attempts=" + attempts + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
     }
 
     @Override
@@ -111,7 +113,7 @@ public class TransactionPinEntity {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        TransactionPinEntity other = (TransactionPinEntity) obj;
+        TransactionPin other = (TransactionPin) obj;
         return Objects.equals(id, other.id) && Objects.equals(pin, other.pin) && Objects.equals(blocked, other.blocked) && Objects.equals(attempts, other.attempts) && Objects.equals(createdAt, other.createdAt) && Objects.equals(updatedAt, other.updatedAt);
     }
 

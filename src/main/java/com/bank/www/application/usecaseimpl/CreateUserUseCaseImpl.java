@@ -3,9 +3,9 @@ package com.bank.www.application.usecaseimpl;
 import java.math.BigDecimal;
 
 import com.bank.www.application.gateway.CreateUserGateway;
-import com.bank.www.core.domain.UserEntity;
-import com.bank.www.core.domain.WalletEntity;
-import com.bank.www.core.domain.TransactionPinEntity;
+import com.bank.www.core.domain.User;
+import com.bank.www.core.domain.Wallet;
+import com.bank.www.core.domain.TransactionPin;
 import com.bank.www.core.exception.EmailException;
 import com.bank.www.core.exception.InternalServerErrorException;
 import com.bank.www.core.exception.TransactionPinException;
@@ -29,7 +29,7 @@ public class CreateUserUseCaseImpl implements CreateUserUseCase {
     }
 
     @Override
-    public void create(UserEntity user, String pin)
+    public void create(User user, String pin)
             throws TaxNumberException, EmailException, TransactionPinException, InternalServerErrorException {
         if (!taxNumberAvailableUseCase.isAvailable(user.getTaxNumber().getValue())) {
             throw new TaxNumberException(ErrorCodeEnum.ON0002.getMessage(), ErrorCodeEnum.ON0002.getCode());
@@ -39,9 +39,8 @@ public class CreateUserUseCaseImpl implements CreateUserUseCase {
             throw new EmailException(ErrorCodeEnum.ON0004.getMessage(), ErrorCodeEnum.ON0004.getCode());
         }
 
-        if (!createUserGateway.create(user, new WalletEntity(BigDecimal.ZERO, user, new TransactionPinEntity(pin)))) {
+        if (!createUserGateway.create(user, new Wallet(BigDecimal.ZERO, user, new TransactionPin(pin)))) {
             throw new InternalServerErrorException(ErrorCodeEnum.ON0005.getMessage(), ErrorCodeEnum.ON0005.getCode());
         }
-
     }
 }

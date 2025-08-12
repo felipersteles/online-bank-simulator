@@ -6,16 +6,16 @@ import java.util.Objects;
 
 import com.bank.www.core.domain.enums.TransactionStatusEnum;
 
-public class TransactionEntity {
+public class Transaction {
     private Long id;
-    private WalletEntity fromWallet;
-    private WalletEntity toWallet;
+    private Wallet fromWallet;
+    private Wallet toWallet;
     private BigDecimal amount;
     private TransactionStatusEnum status;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    public TransactionEntity(Long id, WalletEntity fromWallet, WalletEntity toWallet, BigDecimal amount, TransactionStatusEnum status, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public Transaction(Long id, Wallet fromWallet, Wallet toWallet, BigDecimal amount, TransactionStatusEnum status, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.fromWallet = fromWallet;
         this.toWallet = toWallet;
@@ -25,7 +25,7 @@ public class TransactionEntity {
         this.updatedAt = updatedAt;
     }
 
-    public TransactionEntity(WalletEntity fromWallet, WalletEntity toWallet, BigDecimal amount) {
+    public Transaction(Wallet fromWallet, Wallet toWallet, BigDecimal amount) {
         this.fromWallet = fromWallet;
         this.toWallet = toWallet;
         this.amount = amount;
@@ -34,18 +34,18 @@ public class TransactionEntity {
         this.updatedAt = LocalDateTime.now();
     }
 
-    public TransactionEntity() {
+    public Transaction() {
     }
 
     public Long getId() {
         return id;
     }
 
-    public WalletEntity getFromWallet() {
+    public Wallet getFromWallet() {
         return fromWallet;
     }
 
-    public WalletEntity getToWallet() {
+    public Wallet getToWallet() {
         return toWallet;
     }
 
@@ -69,11 +69,11 @@ public class TransactionEntity {
         this.id = id;
     }
 
-    public void setFromWallet(WalletEntity fromWallet) {
+    public void setFromWallet(Wallet fromWallet) {
         this.fromWallet = fromWallet;
     }
 
-    public void setToWallet(WalletEntity toWallet) {
+    public void setToWallet(Wallet toWallet) {
         this.toWallet = toWallet;
     }
 
@@ -95,7 +95,7 @@ public class TransactionEntity {
 
     @Override
     public String toString() {
-        return "TransactionEntity [id=" + id + ", fromWallet=" + fromWallet + ", toWallet=" + toWallet + ", amount=" + amount + ", status=" + status + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
+        return "Transaction [id=" + id + ", fromWallet=" + fromWallet + ", toWallet=" + toWallet + ", amount=" + amount + ", status=" + status + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
     }
 
     @Override
@@ -111,7 +111,7 @@ public class TransactionEntity {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        TransactionEntity other = (TransactionEntity) obj;
+        Transaction other = (Transaction) obj;
         return Objects.equals(fromWallet, other.fromWallet) && Objects.equals(toWallet, other.toWallet) && Objects.equals(amount, other.amount) && status == other.status && Objects.equals(createdAt, other.createdAt);
     }   
 }

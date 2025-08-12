@@ -8,15 +8,15 @@ import com.bank.www.core.domain.enums.UserTypeEnum;
 import com.bank.www.core.exception.TransferException;
 import com.bank.www.core.exception.enums.ErrorCodeEnum;
 
-public class WalletEntity {
+public class Wallet {
     private Long id;
-    private UserEntity user;
+    private User user;
     private BigDecimal balance;
-    private TransactionPinEntity transactionPin;
+    private TransactionPin transactionPin;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    public WalletEntity(Long id, UserEntity user, BigDecimal balance, TransactionPinEntity transactionPin, LocalDateTime createdAt,
+    public Wallet(Long id, User user, BigDecimal balance, TransactionPin transactionPin, LocalDateTime createdAt,
             LocalDateTime updatedAt) {
         this.id = id;
         this.user = user;
@@ -26,21 +26,21 @@ public class WalletEntity {
         this.updatedAt = updatedAt;
     }
 
-    public WalletEntity(BigDecimal balance, UserEntity user, TransactionPinEntity transactionPin) {
+    public Wallet(BigDecimal balance, User user, TransactionPin transactionPin) {
         this.user = user;
         this.balance = balance;
         this.transactionPin = transactionPin;
         this.createdAt = LocalDateTime.now();
     }
 
-    public WalletEntity() {
+    public Wallet() {
     }
 
     public Long getId() {
         return id;
     }
 
-    public UserEntity getUser() {
+    public User getUser() {
         return user;
     }
 
@@ -48,7 +48,7 @@ public class WalletEntity {
         return balance;
     }
 
-    public TransactionPinEntity getTransactionPin() {
+    public TransactionPin getTransactionPin() {
         return transactionPin;
     }
 
@@ -80,7 +80,7 @@ public class WalletEntity {
         this.id = id;
     }
 
-    public void setUser(UserEntity user) {
+    public void setUser(User user) {
         this.user = user;
     }   
 
@@ -88,7 +88,7 @@ public class WalletEntity {
         this.balance = balance;
     }
 
-    public void setTransactionPin(TransactionPinEntity transactionPin) {
+    public void setTransactionPin(TransactionPin transactionPin) {
         this.transactionPin = transactionPin;
     }
 
@@ -102,7 +102,7 @@ public class WalletEntity {
 
     @Override
     public String toString() {
-        return "WalletEntity [id=" + id + ", user=" + user + ", balance=" + balance + ", transactionPin=" + transactionPin + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
+        return "Wallet [id=" + id + ", user=" + user + ", balance=" + balance + ", transactionPin=" + transactionPin + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
     }
 
     @Override
@@ -118,7 +118,7 @@ public class WalletEntity {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        WalletEntity other = (WalletEntity) obj;
+        Wallet other = (Wallet) obj;
         return Objects.equals(id, other.id) && Objects.equals(user, other.user) && Objects.equals(balance, other.balance) && Objects.equals(transactionPin, other.transactionPin) && Objects.equals(createdAt, other.createdAt) && Objects.equals(updatedAt, other.updatedAt);
     }
 }

@@ -2,8 +2,8 @@ package com.bank.www.usecase;
 
 import java.math.BigDecimal;
 
-import com.bank.www.core.domain.WalletEntity;
+import com.bank.www.core.domain.Wallet;
 
 public interface ConsultBalanceUseCase {
-    BigDecimal consult(WalletEntity wallet);
+    BigDecimal consult(Wallet wallet);
 }

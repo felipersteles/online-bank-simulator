@@ -1,7 +1,7 @@
 package com.bank.www.application.usecaseimpl;
 
 import com.bank.www.application.gateway.CreateTransactionGateway;
-import com.bank.www.core.domain.TransactionEntity;
+import com.bank.www.core.domain.Transaction;
 import com.bank.www.core.exception.TransferException;
 import com.bank.www.core.exception.enums.ErrorCodeEnum;
 import com.bank.www.usecase.CreateTransactionUseCase;
@@ -14,7 +14,7 @@ public class CreateTransactionUseCaseImpl implements CreateTransactionUseCase {
     }
 
     @Override
-    public TransactionEntity create(TransactionEntity transaction) throws TransferException {
+    public Transaction create(Transaction transaction) throws TransferException {
         var transactionSaved = createTransactionGateway.create(transaction);
 
         if (transactionSaved == null) {

@@ -1,7 +1,7 @@
 package com.bank.www.application.usecaseimpl;
 
 import com.bank.www.application.gateway.ConsultBalanceGateway;
-import com.bank.www.core.domain.WalletEntity;
+import com.bank.www.core.domain.Wallet;
 import com.bank.www.usecase.ConsultBalanceUseCase;
 
 import java.math.BigDecimal;
@@ -14,7 +14,7 @@ public class ConsultBalanceUseCaseImpl implements ConsultBalanceUseCase {
     }
 
     @Override
-    public BigDecimal consult(WalletEntity wallet) {
+    public BigDecimal consult(Wallet wallet) {
         return consultBalanceGateway.consult(wallet);
     }
 }
